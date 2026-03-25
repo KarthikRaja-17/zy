@@ -1,0 +1,20 @@
+.dot {
+  width: 8px; height: 8px;
+  background: var(--accent-primary);
+  border-radius: 50%;
+  position: fixed; pointer-events: none; z-index: 9999;
+  transform: translate(-50%, -50%);
+}
+.outline {
+  width: 36px; height: 36px;
+  border: 1.5px solid rgba(123, 92, 255, 0.6);
+  border-radius: 50%;
+  position: fixed; pointer-events: none; z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: width 0.2s, height 0.2s, background 0.2s;
+}
+.hovered {
+  width: 56px; height: 56px;
+  background: rgba(123, 92, 255, 0.1);
+  border-color: var(--accent-primary);
+}

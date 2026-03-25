@@ -1,0 +1,353 @@
+/* Premium Navbar Styles - Zyvora Brand */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 80px;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  background: transparent;
+  font-family: var(--font-primary);
+}
+
+/* Scrolled State - Premium Glassmorphism */
+.scrolled {
+  height: 75px;
+  padding: 0 60px;
+  background: rgba(8, 15, 30, 0.85);
+  backdrop-filter: blur(30px) saturate(180%);
+  -webkit-backdrop-filter: blur(30px) saturate(180%);
+  border-bottom: 1px solid rgba(139, 92, 246, 0.15);
+  box-shadow:
+    0 4px 30px rgba(0, 0, 0, 0.4),
+    0 0 80px rgba(139, 92, 246, 0.08);
+}
+
+/* Logo Section - Premium Display Font */
+.logo {
+  font-family: var(--font-display);
+  font-size: 34px;
+  font-weight: var(--font-bold);
+  letter-spacing: var(--tracking-tight);
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-transform: uppercase;
+}
+
+.logo:hover {
+  transform: scale(1.03) translateY(-1px);
+}
+
+/* Animated gradient text with shimmer */
+.gradientText {
+  background: linear-gradient(135deg,
+      #c4b5fd 0%,
+      #a78bfa 25%,
+      #8b5cf6 50%,
+      #a78bfa 75%,
+      #c4b5fd 100%);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 5s ease infinite;
+  position: relative;
+  font-weight: var(--font-extrabold);
+}
+
+@keyframes shimmer {
+
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Logo glow effect */
+.logo::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 140%;
+  height: 140%;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.25) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  z-index: -1;
+  filter: blur(25px);
+}
+
+.logo:hover::after {
+  opacity: 1;
+}
+
+/* Navigation Links - Premium Typography */
+.navLinks {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.navLink {
+  font-family: var(--font-primary);
+  font-size: 15px;
+  font-weight: var(--font-medium);
+  color: rgba(255, 255, 255, 0.65);
+  text-decoration: none;
+  position: relative;
+  padding: 10px 4px;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  font-size: 13px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Dual line animation */
+.navLink::before,
+.navLink::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  height: 2px;
+  width: 0;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 2px;
+}
+
+.navLink::before {
+  left: 50%;
+  background: linear-gradient(90deg, transparent, #8b5cf6);
+}
+
+.navLink::after {
+  right: 50%;
+  background: linear-gradient(90deg, #8b5cf6, transparent);
+}
+
+.navLink:hover {
+  color: #fff;
+  text-shadow: 0 0 30px rgba(139, 92, 246, 0.6);
+  letter-spacing: var(--tracking-wider);
+}
+
+.navLink:hover::before,
+.navLink:hover::after {
+  width: 50%;
+}
+
+/* Active link state */
+.navLink.active {
+  color: #fff;
+  font-weight: var(--font-semibold);
+}
+
+.navLink.active::before,
+.navLink.active::after {
+  width: 50%;
+  background: linear-gradient(90deg, #a78bfa, #8b5cf6);
+}
+
+/* Premium CTA Button */
+.ctaBtn {
+  font-family: var(--font-primary);
+  font-weight: var(--font-semibold);
+  font-size: 14px;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  position: relative;
+  background: transparent !important;
+  border: 1.5px solid rgba(139, 92, 246, 0.5) !important;
+  color: #c4b5fd !important;
+  border-radius: 50px !important;
+  padding: 14px 36px !important;
+  overflow: hidden !important;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  box-shadow:
+    0 0 0 rgba(139, 92, 246, 0),
+    inset 0 0 0 rgba(139, 92, 246, 0) !important;
+}
+
+/* Button background fill animation */
+.ctaBtn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #7c3aed 0%, #a78bfa 100%);
+  transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: -1;
+}
+
+.ctaBtn:hover {
+  color: #fff !important;
+  border-color: transparent !important;
+  transform: translateY(-3px);
+  box-shadow:
+    0 15px 50px rgba(139, 92, 246, 0.5),
+    0 0 80px rgba(139, 92, 246, 0.3) !important;
+}
+
+.ctaBtn:hover::before {
+  left: 0;
+}
+
+/* Button shine effect */
+.ctaBtn::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg,
+      transparent 30%,
+      rgba(255, 255, 255, 0.15) 50%,
+      transparent 70%);
+  transform: rotate(45deg) translateX(-100%);
+  transition: transform 0.8s;
+}
+
+.ctaBtn:hover::after {
+  transform: rotate(45deg) translateX(100%);
+}
+
+/* Mobile Menu Button */
+.hamburger {
+  display: none !important;
+  width: 48px !important;
+  height: 48px !important;
+  border-radius: 12px !important;
+  background: rgba(139, 92, 246, 0.1) !important;
+  border: 1px solid rgba(139, 92, 246, 0.2) !important;
+  color: #fff !important;
+  font-size: 20px !important;
+  transition: all 0.3s ease !important;
+}
+
+.hamburger:hover {
+  background: rgba(139, 92, 246, 0.2) !important;
+  border-color: rgba(139, 92, 246, 0.4) !important;
+  box-shadow: 0 0 30px rgba(139, 92, 246, 0.3) !important;
+}
+
+/* Mobile Drawer Links - Enhanced Typography */
+.mobileLink {
+  font-family: var(--font-display);
+  display: block;
+  padding: 20px 0;
+  font-size: 22px;
+  font-weight: var(--font-medium);
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(139, 92, 246, 0.1);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  letter-spacing: var(--tracking-tight);
+}
+
+.mobileLink::before {
+  content: '';
+  position: absolute;
+  left: -100%;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.1), transparent);
+  transition: left 0.6s ease;
+}
+
+.mobileLink:hover {
+  color: #a78bfa;
+  padding-left: 20px;
+  border-bottom-color: rgba(139, 92, 246, 0.3);
+  letter-spacing: var(--tracking-normal);
+}
+
+.mobileLink:hover::before {
+  left: 100%;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .navbar {
+    padding: 0 40px;
+  }
+
+  .scrolled {
+    padding: 0 30px;
+  }
+
+  .navLinks {
+    gap: 32px;
+  }
+
+  .logo {
+    font-size: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    height: 80px;
+    padding: 0 24px;
+  }
+
+  .scrolled {
+    height: 70px;
+    padding: 0 20px;
+  }
+
+  .logo {
+    font-size: 28px;
+  }
+
+  .navLinks,
+  .ctaBtn {
+    display: none !important;
+  }
+
+  .hamburger {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+/* Entrance Animations */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.navLinks {
+  animation: fadeInDown 0.6s ease forwards;
+  animation-delay: 0.2s;
+}
+
+.ctaBtn {
+  animation: fadeInDown 0.6s ease forwards;
+  animation-delay: 0.3s;
+}

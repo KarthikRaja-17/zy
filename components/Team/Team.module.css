@@ -1,0 +1,24 @@
+.section { padding: 120px 60px; max-width: 1280px; margin: 0 auto; }
+.header { text-align: center; margin-bottom: 60px; }
+.label { font-size: 12px; letter-spacing: 3px; color: var(--accent-primary); text-transform: uppercase; }
+.title { font-family: var(--font-syne); font-size: 48px; font-weight: 800; color: #fff; margin-top: 12px; }
+
+.card {
+  background: var(--bg-card); border: 1px solid var(--border-subtle);
+  border-radius: 24px; padding: 40px 24px; text-align: center;
+  backdrop-filter: blur(10px); transition: border-color 0.3s, box-shadow 0.3s;
+}
+.card:hover { border-color: var(--border-glow); box-shadow: var(--glow-purple); }
+
+.avatar { font-family: var(--font-syne); font-size: 32px; margin-bottom: 24px; color: #fff; border: 2px solid rgba(255,255,255,0.1); }
+.name { font-family: var(--font-syne); font-size: 20px; font-weight: 700; color: #fff; margin-bottom: 8px; }
+.role { color: var(--text-secondary); font-size: 14px; margin-bottom: 24px; }
+
+.social { display: flex; justify-content: center; gap: 16px; }
+.socialIcon { font-size: 20px; color: var(--text-muted); cursor: pointer; transition: color 0.3s; }
+.socialIcon:hover { color: var(--accent-primary); }
+
+@media (max-width: 768px) {
+  .section { padding: 80px 24px; }
+  .title { font-size: 32px; }
+}
