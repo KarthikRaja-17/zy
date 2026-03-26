@@ -1,11 +1,12 @@
-/* CTABanner.module.css - Premium Dark Theme (Aligned with Other Sections) */
+/* ============================================
+   CTA BANNER MODULE - PREMIUM DARK THEME
+   FULLY RESPONSIVE (Aligned with Other Sections)
+   ============================================ */
 
 .section {
   padding: 140px 80px;
   position: relative;
-  /* overflow: hidden; */
   background: rgba(8, 15, 30, 0.6);
-  /* border-top: 1px solid rgba(139, 92, 246, 0.1); */
   border-bottom: 1px solid rgba(139, 92, 246, 0.1);
   font-family: var(--font-primary, 'Inter', sans-serif);
 }
@@ -79,7 +80,9 @@
   }
 }
 
-/* Container */
+/* ============================================
+   CONTAINER
+   ============================================ */
 .container {
   max-width: 800px;
   margin: 0 auto;
@@ -87,7 +90,9 @@
   z-index: 2;
 }
 
-/* Content */
+/* ============================================
+   CONTENT
+   ============================================ */
 .content {
   text-align: center;
   display: flex;
@@ -95,7 +100,9 @@
   align-items: center;
 }
 
-/* Section Label - Matching Other Sections */
+/* ============================================
+   SECTION LABEL - MATCHING OTHER SECTIONS
+   ============================================ */
 .sectionLabel {
   display: inline-flex;
   align-items: center;
@@ -122,10 +129,21 @@
   display: block;
 }
 
-/* Section Title - Space Grotesk Display */
+.labelText {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #a78bfa;
+  white-space: nowrap;
+}
+
+/* ============================================
+   SECTION TITLE - SPACE GROTESK DISPLAY
+   ============================================ */
 .sectionTitle {
   font-family: var(--font-display, 'Space Grotesk', sans-serif);
-  font-size: 56px;
+  font-size: clamp(28px, 5vw, 56px);
   font-weight: 700;
   color: #fff;
   margin: 0 0 24px;
@@ -161,24 +179,32 @@
   }
 }
 
-/* Subtitle */
+/* ============================================
+   SUBTITLE
+   ============================================ */
 .sectionSub {
   font-family: var(--font-primary, 'Inter', sans-serif);
   color: rgba(255, 255, 255, 0.6);
-  font-size: 18px;
+  font-size: clamp(15px, 2vw, 18px);
   line-height: 1.7;
   margin: 0 0 40px;
   max-width: 600px;
+  padding: 0 20px;
 }
 
-/* Input Wrap */
+/* ============================================
+   INPUT WRAP
+   ============================================ */
 .inputWrap {
   width: 100%;
   max-width: 500px;
   margin-bottom: 32px;
+  padding: 0 20px;
 }
 
-/* Input Group */
+/* ============================================
+   INPUT GROUP
+   ============================================ */
 .inputGroup {
   display: flex;
   width: 100%;
@@ -196,7 +222,9 @@
   box-shadow: 0 0 40px rgba(139, 92, 246, 0.15);
 }
 
-/* Input */
+/* ============================================
+   INPUT
+   ============================================ */
 .input {
   flex: 1;
   background: transparent !important;
@@ -225,15 +253,17 @@
   margin-right: 8px;
 }
 
-/* Button */
+/* ============================================
+   BUTTON
+   ============================================ */
 .btn {
   background: linear-gradient(135deg, #7c3aed 0%, #a78bfa 100%) !important;
   border: none !important;
   border-radius: 50px !important;
-  padding: 0 32px !important;
+  padding: 0 clamp(20px, 3vw, 32px) !important;
   height: 48px !important;
   font-family: var(--font-primary, 'Inter', sans-serif);
-  font-size: 14px;
+  font-size: clamp(12px, 1.2vw, 14px);
   font-weight: 600;
   letter-spacing: 0.05em;
   text-transform: uppercase;
@@ -246,6 +276,7 @@
   overflow: hidden;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
   box-shadow: 0 4px 20px rgba(139, 92, 246, 0.3);
+  white-space: nowrap;
 }
 
 .btn::before {
@@ -277,13 +308,16 @@
   transform: translateX(4px);
 }
 
-/* Footer Features */
+/* ============================================
+   FOOTER FEATURES
+   ============================================ */
 .footerFeatures {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 24px;
   flex-wrap: wrap;
+  padding: 0 20px;
 }
 
 .featureItem {
@@ -291,9 +325,10 @@
   align-items: center;
   gap: 8px;
   font-family: var(--font-primary, 'Inter', sans-serif);
-  font-size: 13px;
+  font-size: clamp(11px, 1.2vw, 13px);
   color: rgba(255, 255, 255, 0.5);
   font-weight: 500;
+  white-space: nowrap;
 }
 
 .featureIcon {
@@ -308,68 +343,390 @@
   border-radius: 50%;
 }
 
-/* Responsive */
+/* ============================================
+   RESPONSIVE BREAKPOINTS
+   ============================================ */
+
+/* Large Desktop */
+@media (min-width: 1440px) {
+  .section {
+    padding: 160px 100px;
+  }
+
+  .container {
+    max-width: 900px;
+  }
+
+  .inputWrap {
+    max-width: 550px;
+  }
+}
+
+/* Desktop */
+@media (max-width: 1280px) {
+  .section {
+    padding: 120px 60px;
+  }
+
+  .inputWrap {
+    max-width: 480px;
+  }
+}
+
+/* Small Desktop / Large Tablet */
 @media (max-width: 1024px) {
   .section {
     padding: 100px 40px;
   }
 
   .sectionTitle {
-    font-size: 48px;
+    font-size: clamp(26px, 4vw, 48px);
+  }
+
+  .sectionSub {
+    font-size: 16px;
+    margin-bottom: 32px;
+  }
+
+  .inputWrap {
+    max-width: 450px;
+    margin-bottom: 28px;
+  }
+
+  .footerFeatures {
+    gap: 20px;
   }
 }
 
-@media (max-width: 768px) {
+/* Tablet */
+@media (max-width: 900px) {
   .section {
-    padding: 80px 24px;
-  }
-
-  .sectionTitle {
-    font-size: 36px;
+    padding: 80px 32px;
   }
 
   .sectionLabel {
     font-size: 12px;
     letter-spacing: 0.15em;
+    gap: 12px;
+    margin-bottom: 20px;
   }
 
-  .sectionLabel .labelLine,
+  .labelLine,
+  .sectionLabel span:nth-child(3) {
+    width: 30px;
+  }
+
+  .sectionSub {
+    font-size: 15px;
+    margin-bottom: 28px;
+    padding: 0 10px;
+  }
+
+  .inputWrap {
+    max-width: 100%;
+    padding: 0 10px;
+    margin-bottom: 24px;
+  }
+
+  .inputGroup {
+    padding: 5px;
+  }
+
+  .input {
+    height: 44px !important;
+    font-size: 14px;
+    padding: 0 16px !important;
+  }
+
+  .btn {
+    height: 44px !important;
+    padding: 0 24px !important;
+  }
+
+  .footerFeatures {
+    gap: 16px;
+  }
+
+  .featureItem {
+    font-size: 12px;
+  }
+}
+
+/* Mobile Breakpoint */
+@media (max-width: 768px) {
+  .section {
+    padding: 60px 20px;
+  }
+
+  .sectionTitle {
+    font-size: clamp(24px, 7vw, 36px);
+    margin-bottom: 16px;
+  }
+
+  .sectionLabel {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+
+  .labelLine,
   .sectionLabel span:nth-child(3) {
     width: 20px;
   }
 
   .sectionSub {
-    font-size: 16px;
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 24px;
+    padding: 0;
   }
 
   .inputWrap {
     max-width: 100%;
+    padding: 0;
+    margin-bottom: 24px;
   }
 
   .inputGroup {
     flex-direction: column;
-    border-radius: 20px;
+    border-radius: 16px;
     padding: 12px;
     gap: 12px;
+    background: rgba(8, 15, 30, 0.8);
   }
 
   .input {
     text-align: center;
+    height: 48px !important;
+    font-size: 15px;
     padding: 0 16px !important;
+    border-bottom: 1px solid rgba(139, 92, 246, 0.1) !important;
+  }
+
+  .input:focus {
+    border-bottom-color: rgba(139, 92, 246, 0.3) !important;
   }
 
   .btn {
     width: 100%;
     justify-content: center;
     border-radius: 12px !important;
+    height: 48px !important;
+    font-size: 14px;
+  }
+
+  .btn:hover {
+    transform: none;
+  }
+
+  .btn:active {
+    transform: scale(0.98) !important;
   }
 
   .footerFeatures {
     flex-direction: column;
-    gap: 16px;
+    gap: 12px;
+    padding: 0;
   }
 
   .featureDivider {
     display: none;
+  }
+
+  .featureItem {
+    font-size: 13px;
+  }
+
+  /* Hide orbs on mobile */
+  .orb1,
+  .orb2,
+  .orb3 {
+    display: none;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+  .section {
+    padding: 50px 16px;
+  }
+
+  .sectionTitle {
+    font-size: 26px;
+  }
+
+  .sectionLabel {
+    font-size: 10px;
+    gap: 8px;
+  }
+
+  .labelLine,
+  .sectionLabel span:nth-child(3) {
+    width: 16px;
+  }
+
+  .sectionSub {
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+
+  .inputGroup {
+    padding: 10px;
+    gap: 10px;
+    border-radius: 14px;
+  }
+
+  .input {
+    height: 44px !important;
+    font-size: 14px;
+  }
+
+  .btn {
+    height: 44px !important;
+    font-size: 13px;
+  }
+
+  .featureItem {
+    font-size: 12px;
+    gap: 6px;
+  }
+
+  .featureIcon {
+    font-size: 12px;
+  }
+}
+
+/* Extra Small Mobile */
+@media (max-width: 360px) {
+  .section {
+    padding: 40px 12px;
+  }
+
+  .sectionTitle {
+    font-size: 24px;
+  }
+
+  .sectionSub {
+    font-size: 13px;
+  }
+
+  .input {
+    font-size: 13px;
+  }
+
+  .btn {
+    font-size: 12px;
+  }
+
+  .featureItem {
+    font-size: 11px;
+  }
+}
+
+/* Landscape Mobile */
+@media (max-height: 500px) and (orientation: landscape) and (max-width: 768px) {
+  .section {
+    padding: 40px 20px;
+  }
+
+  .sectionSub {
+    margin-bottom: 20px;
+  }
+
+  .inputGroup {
+    flex-direction: row;
+    border-radius: 50px;
+    padding: 6px;
+  }
+
+  .input {
+    text-align: left;
+    border-bottom: none !important;
+  }
+
+  .btn {
+    width: auto;
+    border-radius: 50px !important;
+  }
+
+  .footerFeatures {
+    flex-direction: row;
+    gap: 16px;
+  }
+
+  .featureDivider {
+    display: block;
+  }
+}
+
+/* ============================================
+   ACCESSIBILITY & PERFORMANCE
+   ============================================ */
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .gradientText {
+    animation: none;
+  }
+
+  .orb1,
+  .orb2,
+  .orb3 {
+    animation: none;
+  }
+
+  .inputGroup,
+  .btn {
+    transition: none;
+  }
+
+  .btn:hover {
+    transform: none;
+  }
+
+  .btnIcon {
+    transition: none;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .inputGroup {
+    border-width: 2px;
+  }
+
+  .btn {
+    border: 2px solid #fff !important;
+  }
+}
+
+/* Focus visible for accessibility */
+.input:focus-visible,
+.btn:focus-visible {
+  outline: 2px solid #a78bfa;
+  outline-offset: 4px;
+}
+
+/* Print styles */
+@media print {
+  .section {
+    padding: 40px 20px;
+  }
+
+  .orb1,
+  .orb2,
+  .orb3,
+  .gridOverlay {
+    display: none;
+  }
+
+  .inputGroup {
+    border: 1px solid #ccc;
+  }
+
+  .btn {
+    background: #7c3aed !important;
+    box-shadow: none !important;
   }
 }

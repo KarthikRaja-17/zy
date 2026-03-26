@@ -1,4 +1,7 @@
-/* Portfolio.module.css - Premium Dark Theme (Aligned with Services, About & Process) */
+/* ============================================
+   PORTFOLIO MODULE - PREMIUM DARK THEME
+   FULLY RESPONSIVE (Aligned with Services, About & Process)
+   ============================================ */
 
 .section {
   padding: 140px 80px;
@@ -68,7 +71,9 @@
   }
 }
 
-/* Container */
+/* ============================================
+   CONTAINER
+   ============================================ */
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -79,7 +84,9 @@
   align-items: center;
 }
 
-/* Section Header - Matching Other Sections */
+/* ============================================
+   SECTION HEADER - MATCHING OTHER SECTIONS
+   ============================================ */
 .sectionHeader {
   text-align: center;
   max-width: 700px;
@@ -115,10 +122,19 @@
   display: block;
 }
 
+.labelText {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #a78bfa;
+  white-space: nowrap;
+}
+
 /* Section Title - Space Grotesk Display */
 .sectionTitle {
   font-family: var(--font-display, 'Space Grotesk', sans-serif);
-  font-size: 56px;
+  font-size: clamp(28px, 5vw, 56px);
   font-weight: 700;
   color: #fff;
   margin: 0 0 20px;
@@ -157,20 +173,24 @@
 /* Subtitle */
 .sectionSub {
   font-family: var(--font-primary, 'Inter', sans-serif);
-  font-size: 18px;
+  font-size: clamp(15px, 2vw, 18px);
   color: rgba(255, 255, 255, 0.6);
   line-height: 1.7;
   margin: 0;
   font-weight: 400;
+  padding: 0 20px;
 }
 
-/* Filters - Enhanced Glass Buttons */
+/* ============================================
+   FILTERS - ENHANCED GLASS BUTTONS
+   ============================================ */
 .filters {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 12px;
   margin-bottom: 60px;
+  padding: 0 10px;
 }
 
 .filterBtn {
@@ -180,11 +200,12 @@
   padding: 12px 28px;
   border-radius: 50px;
   font-family: var(--font-primary, 'Inter', sans-serif);
-  font-size: 14px;
+  font-size: clamp(12px, 1.5vw, 14px);
   font-weight: 500;
   cursor: pointer;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   backdrop-filter: blur(20px) saturate(180%);
+  white-space: nowrap;
 }
 
 .filterBtn:hover {
@@ -205,9 +226,12 @@
 .filterActive:hover {
   background: linear-gradient(135deg, #7c3aed 0%, #a78bfa 100%);
   box-shadow: 0 8px 30px rgba(139, 92, 246, 0.5);
+  transform: translateY(-2px);
 }
 
-/* Projects Grid */
+/* ============================================
+   PROJECTS GRID
+   ============================================ */
 .projectsGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -216,7 +240,9 @@
   margin-bottom: 60px;
 }
 
-/* Project Cards - Premium Glass Cards */
+/* ============================================
+   PROJECT CARDS - PREMIUM GLASS CARDS
+   ============================================ */
 .card {
   position: relative;
   border-radius: 24px;
@@ -391,7 +417,7 @@
   background: rgba(139, 92, 246, 0.15);
   border: 1px solid rgba(139, 92, 246, 0.3);
   color: #c4b5fd;
-  font-size: 12px;
+  font-size: clamp(10px, 1.2vw, 12px);
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -399,12 +425,13 @@
   border-radius: 50px;
   margin-bottom: 16px;
   backdrop-filter: blur(10px);
+  white-space: nowrap;
 }
 
 /* Card Title */
 .cardTitle {
   font-family: var(--font-display, 'Space Grotesk', sans-serif);
-  font-size: 28px;
+  font-size: clamp(22px, 2.5vw, 28px);
   font-weight: 700;
   color: #fff;
   margin: 0 0 12px;
@@ -421,10 +448,14 @@
 .cardResult {
   font-family: var(--font-primary, 'Inter', sans-serif);
   color: rgba(255, 255, 255, 0.6);
-  font-size: 15px;
+  font-size: clamp(13px, 1.5vw, 15px);
   line-height: 1.7;
   margin: 0 0 24px;
   font-weight: 400;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 /* View Link */
@@ -443,6 +474,7 @@
 
 .arrowIcon {
   transition: transform 0.3s ease;
+  font-size: 14px;
 }
 
 .card:hover .viewLink {
@@ -474,9 +506,14 @@
   opacity: 1;
 }
 
-/* CTA Wrapper */
+/* ============================================
+   CTA WRAPPER
+   ============================================ */
 .ctaWrapper {
   margin-top: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 /* CTA Button - Matching Other Sections */
@@ -484,13 +521,13 @@
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  padding: 0 36px;
-  height: 56px;
+  padding: 0 clamp(24px, 3vw, 36px);
+  height: clamp(48px, 6vw, 56px);
   background: linear-gradient(135deg, #7c3aed 0%, #a78bfa 100%);
   border: none;
   border-radius: 50px;
   font-family: var(--font-primary, 'Inter', sans-serif);
-  font-size: 14px;
+  font-size: clamp(12px, 1.2vw, 14px);
   font-weight: 600;
   letter-spacing: 0.05em;
   text-transform: uppercase;
@@ -500,6 +537,7 @@
   overflow: hidden;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 0 4px 20px rgba(139, 92, 246, 0.3);
+  white-space: nowrap;
 }
 
 .ctaButton::before {
@@ -522,61 +560,163 @@
   left: 100%;
 }
 
-/* Responsive */
+/* ============================================
+   RESPONSIVE BREAKPOINTS
+   ============================================ */
+
+/* Large Desktop */
+@media (min-width: 1440px) {
+  .section {
+    padding: 160px 100px;
+  }
+
+  .projectsGrid {
+    gap: 32px;
+  }
+
+  .card {
+    height: 450px;
+  }
+
+  .cardContent {
+    padding: 36px;
+  }
+}
+
+/* Desktop */
+@media (max-width: 1280px) {
+  .section {
+    padding: 120px 60px;
+  }
+
+  .sectionHeader {
+    margin-bottom: 50px;
+  }
+
+  .projectsGrid {
+    gap: 24px;
+  }
+
+  .card {
+    height: 400px;
+  }
+
+  .iconWrap {
+    width: 60px;
+    height: 60px;
+    font-size: 26px;
+  }
+
+  .cardContent {
+    padding: 28px;
+  }
+}
+
+/* Small Desktop / Large Tablet */
 @media (max-width: 1024px) {
   .section {
     padding: 100px 40px;
   }
 
   .sectionTitle {
-    font-size: 48px;
+    font-size: clamp(26px, 4vw, 48px);
+  }
+
+  .sectionHeader {
+    margin-bottom: 40px;
+  }
+
+  .filters {
+    margin-bottom: 40px;
   }
 
   .projectsGrid {
     grid-template-columns: repeat(2, 1fr);
     gap: 24px;
+    max-width: 900px;
+    margin: 0 auto 50px;
   }
 
   .card {
     height: 380px;
+    border-radius: 20px;
+  }
+
+  .card::before,
+  .card::after {
+    border-radius: 20px;
+  }
+
+  .cornerAccent {
+    border-radius: 0 20px 0 0;
+  }
+
+  .iconWrap {
+    width: 56px;
+    height: 56px;
+    font-size: 24px;
+    top: 28px;
+    left: 28px;
+    border-radius: 14px;
+  }
+
+  .iconWrap::before {
+    border-radius: 16px;
+  }
+
+  .cardContent {
+    padding: 28px;
+  }
+
+  .cardNumber {
+    top: 20px;
+    right: 20px;
+  }
+
+  .cornerAccent {
+    width: 100px;
+    height: 100px;
   }
 }
 
-@media (max-width: 768px) {
+/* Tablet */
+@media (max-width: 900px) {
   .section {
-    padding: 80px 24px;
+    padding: 80px 32px;
   }
 
-  .sectionTitle {
-    font-size: 36px;
+  .sectionHeader {
+    margin-bottom: 36px;
   }
 
   .sectionLabel {
     font-size: 12px;
     letter-spacing: 0.15em;
+    gap: 12px;
+    margin-bottom: 20px;
   }
 
-  .sectionLabel .labelLine,
+  .labelLine,
   .sectionLabel span:nth-child(3) {
-    width: 20px;
+    width: 30px;
   }
 
   .sectionSub {
     font-size: 16px;
+    padding: 0 10px;
   }
 
   .filters {
-    gap: 8px;
-    margin-bottom: 40px;
+    gap: 10px;
+    margin-bottom: 32px;
   }
 
   .filterBtn {
-    padding: 10px 20px;
+    padding: 10px 24px;
     font-size: 13px;
   }
 
   .projectsGrid {
-    grid-template-columns: 1fr;
     gap: 20px;
   }
 
@@ -588,20 +728,470 @@
     padding: 24px;
   }
 
+  .catTag {
+    padding: 5px 12px;
+    font-size: 11px;
+    margin-bottom: 12px;
+  }
+
   .iconWrap {
-    width: 56px;
-    height: 56px;
-    font-size: 24px;
+    width: 52px;
+    height: 52px;
+    font-size: 22px;
     top: 24px;
     left: 24px;
   }
 
   .cardTitle {
-    font-size: 24px;
+    font-size: 22px;
+    margin-bottom: 10px;
+  }
+
+  .cardResult {
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+
+  .viewLink {
+    font-size: 13px;
+  }
+}
+
+/* Mobile Breakpoint */
+@media (max-width: 768px) {
+  .section {
+    padding: 60px 20px;
+  }
+
+  .section::before {
+    width: 100%;
+    height: 300px;
+  }
+
+  .sectionHeader {
+    margin-bottom: 32px;
+  }
+
+  .sectionTitle {
+    font-size: clamp(24px, 7vw, 36px);
+    margin-bottom: 16px;
+  }
+
+  .sectionLabel {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+
+  .labelLine,
+  .sectionLabel span:nth-child(3) {
+    width: 20px;
+  }
+
+  .sectionSub {
+    font-size: 15px;
+    line-height: 1.6;
+    padding: 0;
+  }
+
+  .filters {
+    gap: 8px;
+    margin-bottom: 28px;
+    padding: 0;
+  }
+
+  .filterBtn {
+    padding: 8px 18px;
+    font-size: 12px;
+    /* Disable hover on mobile */
+    transform: none !important;
+  }
+
+  .filterBtn:active {
+    transform: scale(0.95) !important;
+  }
+
+  .projectsGrid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    max-width: 500px;
+    margin: 0 auto 40px;
+  }
+
+  .card {
+    height: 340px;
+    border-radius: 16px;
+    /* Disable hover lift on mobile */
+    transform: none !important;
+  }
+
+  .card::before,
+  .card::after {
+    border-radius: 16px;
+  }
+
+  .card:active {
+    transform: scale(0.98) !important;
+    border-color: rgba(139, 92, 246, 0.3);
+  }
+
+  .cornerAccent {
+    border-radius: 0 16px 0 0;
+  }
+
+  .iconWrap {
+    width: 48px;
+    height: 48px;
+    font-size: 20px;
+    top: 20px;
+    left: 20px;
+    border-radius: 12px;
+  }
+
+  .iconWrap::before {
+    border-radius: 14px;
+  }
+
+  .cardContent {
+    padding: 20px;
+    padding-top: 60px;
+  }
+
+  .cardNumber {
+    top: 16px;
+    right: 16px;
+    font-size: 13px;
+  }
+
+  .cornerAccent {
+    width: 80px;
+    height: 80px;
+  }
+
+  .catTag {
+    padding: 4px 10px;
+    font-size: 10px;
+    margin-bottom: 10px;
+    letter-spacing: 0.05em;
+  }
+
+  .cardTitle {
+    font-size: 20px;
+    margin-bottom: 8px;
+  }
+
+  .cardResult {
+    font-size: 13px;
+    line-height: 1.6;
+    margin-bottom: 16px;
+    -webkit-line-clamp: 2;
+  }
+
+  .viewLink {
+    font-size: 12px;
+    gap: 6px;
+  }
+
+  .arrowIcon {
+    font-size: 12px;
+  }
+
+  .ctaWrapper {
+    margin-top: 10px;
   }
 
   .ctaButton {
     width: 100%;
+    max-width: 300px;
     justify-content: center;
+    height: 52px;
+    font-size: 13px;
+  }
+
+  .ctaButton:hover {
+    transform: none;
+  }
+
+  .ctaButton:active {
+    transform: scale(0.98) !important;
+  }
+
+  /* Hide orbs on mobile */
+  .orb1,
+  .orb2 {
+    display: none;
+  }
+
+  .cardGlow {
+    display: none;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+  .section {
+    padding: 50px 16px;
+  }
+
+  .sectionHeader {
+    margin-bottom: 28px;
+  }
+
+  .sectionTitle {
+    font-size: 26px;
+  }
+
+  .sectionLabel {
+    font-size: 10px;
+    gap: 8px;
+  }
+
+  .labelLine,
+  .sectionLabel span:nth-child(3) {
+    width: 16px;
+  }
+
+  .sectionSub {
+    font-size: 14px;
+  }
+
+  .filters {
+    gap: 6px;
+    margin-bottom: 24px;
+  }
+
+  .filterBtn {
+    padding: 6px 14px;
+    font-size: 11px;
+  }
+
+  .card {
+    height: 320px;
+    border-radius: 14px;
+  }
+
+  .card::before,
+  .card::after {
+    border-radius: 14px;
+  }
+
+  .cornerAccent {
+    border-radius: 0 14px 0 0;
+  }
+
+  .iconWrap {
+    width: 44px;
+    height: 44px;
+    font-size: 18px;
+    border-radius: 10px;
+  }
+
+  .iconWrap::before {
+    border-radius: 12px;
+  }
+
+  .cardContent {
+    padding: 16px;
+    padding-top: 50px;
+  }
+
+  .cardTitle {
+    font-size: 18px;
+  }
+
+  .cardResult {
+    font-size: 12px;
+    margin-bottom: 14px;
+  }
+
+  .catTag {
+    padding: 3px 8px;
+    font-size: 9px;
+  }
+
+  .ctaButton {
+    height: 48px;
+    font-size: 12px;
+    max-width: 280px;
+  }
+}
+
+/* Extra Small Mobile */
+@media (max-width: 360px) {
+  .section {
+    padding: 40px 12px;
+  }
+
+  .sectionTitle {
+    font-size: 24px;
+  }
+
+  .filterBtn {
+    padding: 6px 12px;
+    font-size: 10px;
+  }
+
+  .card {
+    height: 300px;
+  }
+
+  .iconWrap {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+  }
+
+  .cardTitle {
+    font-size: 17px;
+  }
+
+  .cardResult {
+    font-size: 11px;
+  }
+
+  .ctaButton {
+    height: 44px;
+    font-size: 11px;
+  }
+}
+
+/* Landscape Mobile */
+@media (max-height: 500px) and (orientation: landscape) and (max-width: 768px) {
+  .section {
+    padding: 40px 20px;
+  }
+
+  .sectionHeader {
+    margin-bottom: 24px;
+  }
+
+  .sectionTitle {
+    font-size: 28px;
+  }
+
+  .filters {
+    margin-bottom: 20px;
+  }
+
+  .projectsGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .card {
+    height: 280px;
+  }
+
+  .cardContent {
+    padding: 16px;
+    padding-top: 40px;
+  }
+
+  .iconWrap {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+  }
+
+  .cardTitle {
+    font-size: 16px;
+    margin-bottom: 6px;
+  }
+
+  .cardResult {
+    font-size: 11px;
+    margin-bottom: 12px;
+    -webkit-line-clamp: 2;
+  }
+}
+
+/* ============================================
+   ACCESSIBILITY & PERFORMANCE
+   ============================================ */
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+
+  .gradientText,
+  .cardGlow {
+    animation: none;
+  }
+
+  .orb1,
+  .orb2 {
+    animation: none;
+  }
+
+  .card,
+  .iconWrap,
+  .filterBtn,
+  .ctaButton {
+    transition: none;
+  }
+
+  .card:hover,
+  .filterBtn:hover {
+    transform: none;
+  }
+
+  .cardBg {
+    transition: none;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+
+  .card,
+  .iconWrap,
+  .filterBtn {
+    border-width: 2px;
+  }
+
+  .ctaButton {
+    border: 2px solid #fff;
+  }
+}
+
+/* Focus visible for accessibility */
+.card:focus-visible,
+.filterBtn:focus-visible,
+.ctaButton:focus-visible {
+  outline: 2px solid #a78bfa;
+  outline-offset: 4px;
+}
+
+/* Print styles */
+@media print {
+  .section {
+    padding: 40px 20px;
+  }
+
+  .orb1,
+  .orb2,
+  .gridOverlay,
+  .cardGlow,
+  .cornerAccent {
+    display: none;
+  }
+
+  .card {
+    border: 1px solid #ccc;
+    box-shadow: none;
+    break-inside: avoid;
+    height: auto;
+  }
+
+  .cardBg {
+    display: none;
+  }
+
+  .projectsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .filters {
+    display: none;
   }
 }

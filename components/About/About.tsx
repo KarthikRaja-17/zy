@@ -1,6 +1,6 @@
 'use client';
 import { motion, useInView } from 'framer-motion';
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useState, useEffect, useMemo } from 'react';
 import {
   CheckCircleFilled,
   ArrowRightOutlined,
@@ -35,9 +35,10 @@ const skills = [
   { name: 'IT Consulting', value: 92, icon: <BulbOutlined /> },
 ];
 
-// Counter hook
-function useCounter(target: number, isActive: boolean) {
+// Counter component - hooks are called at component level, not inside map
+function Counter({ target, isActive, suffix }: { target: number; isActive: boolean; suffix: string }) {
   const [count, setCount] = useState(0);
+
   useEffect(() => {
     if (!isActive) return;
     let start = 0;
@@ -52,29 +53,64 @@ function useCounter(target: number, isActive: boolean) {
     }, 16);
     return () => clearInterval(timer);
   }, [isActive, target]);
-  return count;
+
+  return <>{count}<span className={styles.statSuffix}>{suffix}</span></>;
 }
 
 export default function About() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const [isMobile, setIsMobile] = useState(false);
+  const [isTablet, setIsTablet] = useState(false);
+  const [marginTop, setMarginTop] = useState('-120px');
+
+  // Handle resize for isMobile/isTablet
+  useEffect(() => {
+    const handleResize = () => {
+      const width = window.innerWidth;
+      setIsMobile(width <= 768);
+      setIsTablet(width <= 1024 && width > 768);
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Handle margin top updates separately
+  useEffect(() => {
+    const handleResize = () => {
+      const width = window.innerWidth;
+      if (width <= 480) setMarginTop('-60px');
+      else if (width <= 768) setMarginTop('-80px');
+      else setMarginTop('-120px');
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   return (
-    <section id="about" className={styles.section} ref={ref} style={{ marginTop: '-120px' }}>
-      {/* Background Effects - Matching Hero/Services */}
-      <div className={styles.orb1} />
-      <div className={styles.orb2} />
-      <div className={styles.orb3} />
+    <section id="about" className={styles.section} ref={ref} style={{ marginTop }}>
+      {/* Background Effects - Conditional for mobile performance */}
+      {!isMobile && (
+        <>
+          <div className={styles.orb1} />
+          <div className={styles.orb2} />
+          <div className={styles.orb3} />
+        </>
+      )}
       <div className={styles.gridOverlay} />
 
       <div className={styles.container}>
         {/* CENTERED CONTENT */}
         <motion.div
           className={styles.centerContent}
-          initial={{ opacity: 0, y: 60 }}
+          initial={{ opacity: 0, y: isMobile ? 40 : 60 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+          transition={{ duration: isMobile ? 0.6 : 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
         >
           {/* Premium Label - Matching Services Style */}
           <motion.div
@@ -113,7 +149,8 @@ export default function About() {
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.3 + i * 0.1, duration: 0.5 }}
-                whileHover={{ y: -4, scale: 1.02 }}
+                whileHover={!isMobile ? { y: -4, scale: 1.02 } : {}}
+                whileTap={isMobile ? { scale: 0.95 } : {}}
               >
                 <span className={styles.tagIcon}>{f.icon}</span>
                 <span className={styles.tagText}>{f.text}</span>
@@ -128,7 +165,7 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.6, duration: 0.5 }}
-            whileHover={{ scale: 1.02 }}
+            whileHover={!isMobile ? { scale: 1.02 } : {}}
             whileTap={{ scale: 0.98 }}
           >
             <span>Explore Our Services</span>
@@ -136,38 +173,40 @@ export default function About() {
           </motion.button>
         </motion.div>
 
-        {/* Stats Grid - Premium Cards */}
-        {/* <motion.div
-          className={styles.statsGrid}
-          initial={{ opacity: 0, y: 60 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-        >
-          {stats.map((stat, i) => (
-            <motion.div
-              key={i}
-              className={styles.statCard}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.4 + i * 0.1, duration: 0.5 }}
-              whileHover={{ y: -8, scale: 1.02 }}
-            >
-              <div className={styles.cornerAccent} />
-              <div className={styles.statNumber}>0{i + 1}</div>
-              <div className={styles.iconWrap}>{stat.icon}</div>
-              <div className={styles.statContent}>
-                <span className={styles.statValue}>
-                  {useCounter(stat.value, isInView)}
-                  <span className={styles.statSuffix}>{stat.suffix}</span>
-                </span>
-                <span className={styles.statLabel}>{stat.label}</span>
-              </div>
-              <div className={styles.statGlow} />
-            </motion.div>
-          ))}
-        </motion.div> */}
+        {/* Stats Grid - Premium Cards - Hidden on mobile for cleaner layout */}
+        {!isMobile && (
+          <motion.div
+            className={styles.statsGrid}
+            initial={{ opacity: 0, y: 60 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+          >
+            {stats.map((stat, i) => (
+              <motion.div
+                key={i}
+                className={styles.statCard}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.4 + i * 0.1, duration: 0.5 }}
+                whileHover={!isMobile ? { y: -8, scale: 1.02 } : {}}
+              >
+                <div className={styles.cornerAccent} />
+                <div className={styles.statNumber}>0{i + 1}</div>
+                <div className={styles.iconWrap}>{stat.icon}</div>
+                <div className={styles.statContent}>
+                  <span className={styles.statValue}>
+                    {/* Use Counter component instead of hook directly */}
+                    <Counter target={stat.value} isActive={isInView} suffix={stat.suffix} />
+                  </span>
+                  <span className={styles.statLabel}>{stat.label}</span>
+                </div>
+                <div className={styles.statGlow} />
+              </motion.div>
+            ))}
+          </motion.div>
+        )}
 
         {/* Skills Section - Enhanced Glass Card */}
         <motion.div
@@ -180,7 +219,7 @@ export default function About() {
           <div className={styles.skillsHeader}>
             <div className={styles.sectionLabel}>
               <span className={styles.labelLine} />
-              <span>Core Expertise</span>
+              <span className={styles.labelText}>Core Expertise</span>
               <span className={styles.labelLine} />
             </div>
             <h3 className={styles.skillsTitle}>Technical Capabilities</h3>
@@ -191,7 +230,7 @@ export default function About() {
               <motion.div
                 key={skill.name}
                 className={styles.skillItem}
-                initial={{ opacity: 0, x: -20 }}
+                initial={{ opacity: 0, x: isMobile ? 0 : -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.6 + i * 0.1, duration: 0.5 }}

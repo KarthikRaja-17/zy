@@ -1,4 +1,7 @@
-/* Services.module.css - Premium Dark Theme */
+/* ============================================
+   SERVICES MODULE - PREMIUM DARK THEME
+   FULLY RESPONSIVE
+   ============================================ */
 
 .section {
   padding: 140px 80px;
@@ -22,6 +25,9 @@
   z-index: 0;
 }
 
+/* ============================================
+   SECTION HEADER
+   ============================================ */
 .sectionHeader {
   text-align: center;
   margin-bottom: 80px;
@@ -58,7 +64,7 @@
 /* Section Title with Display Font */
 .sectionTitle {
   font-family: var(--font-display);
-  font-size: 56px;
+  font-size: clamp(32px, 5vw, 56px);
   font-weight: 700;
   color: #fff;
   margin: 0 0 20px;
@@ -97,15 +103,18 @@
 /* Subtitle */
 .sectionSub {
   font-family: var(--font-primary);
-  font-size: 18px;
+  font-size: clamp(15px, 2vw, 18px);
   color: rgba(255, 255, 255, 0.6);
   line-height: 1.7;
   max-width: 600px;
   margin: 0 auto;
   font-weight: 400;
+  padding: 0 20px;
 }
 
-/* Grid Layout */
+/* ============================================
+   GRID LAYOUT
+   ============================================ */
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -114,7 +123,9 @@
   z-index: 1;
 }
 
-/* Premium Service Cards */
+/* ============================================
+   PREMIUM SERVICE CARDS
+   ============================================ */
 .card {
   background: rgba(8, 15, 30, 0.4);
   border: 1px solid rgba(139, 92, 246, 0.15);
@@ -129,6 +140,8 @@
   box-shadow:
     0 10px 40px rgba(0, 0, 0, 0.2),
     0 0 0 1px rgba(139, 92, 246, 0.05) inset;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Hover gradient overlay */
@@ -195,6 +208,7 @@
   position: relative;
   transition: all 0.4s ease;
   box-shadow: 0 8px 32px rgba(139, 92, 246, 0.1);
+  flex-shrink: 0;
 }
 
 .iconWrap::before {
@@ -222,7 +236,7 @@
 /* Card Title */
 .cardTitle {
   font-family: var(--font-display);
-  font-size: 22px;
+  font-size: clamp(18px, 2vw, 22px);
   font-weight: 600;
   color: #fff;
   margin-bottom: 16px;
@@ -238,11 +252,12 @@
 /* Card Description */
 .cardDesc {
   font-family: var(--font-primary);
-  font-size: 15px;
+  font-size: clamp(14px, 1.5vw, 15px);
   color: rgba(255, 255, 255, 0.6);
   line-height: 1.8;
   margin-bottom: 28px;
   font-weight: 400;
+  flex-grow: 1;
 }
 
 /* Learn More Link */
@@ -258,6 +273,7 @@
   letter-spacing: 0.05em;
   transition: all 0.4s ease;
   position: relative;
+  margin-top: auto;
 }
 
 .cardArrow::after {
@@ -309,33 +325,185 @@
   transform: scale(1.1);
 }
 
-/* Responsive Design */
+/* ============================================
+   RESPONSIVE BREAKPOINTS
+   ============================================ */
+
+/* Large Desktop */
+@media (min-width: 1440px) {
+  .section {
+    padding: 160px 100px;
+  }
+
+  .sectionHeader {
+    margin-bottom: 100px;
+  }
+
+  .grid {
+    gap: 32px;
+  }
+
+  .card {
+    padding: 48px 36px;
+  }
+}
+
+/* Desktop */
+@media (max-width: 1280px) {
+  .section {
+    padding: 120px 60px;
+  }
+
+  .sectionHeader {
+    margin-bottom: 70px;
+  }
+
+  .grid {
+    gap: 24px;
+  }
+
+  .card {
+    padding: 36px 28px;
+  }
+
+  .iconWrap {
+    width: 60px;
+    height: 60px;
+    font-size: 26px;
+  }
+}
+
+/* Small Desktop / Large Tablet */
 @media (max-width: 1024px) {
   .section {
     padding: 100px 40px;
   }
 
+  .sectionHeader {
+    margin-bottom: 60px;
+  }
+
   .sectionTitle {
-    font-size: 48px;
+    font-size: clamp(28px, 4vw, 48px);
   }
 
   .grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .card {
+    padding: 32px 28px;
+  }
+
+  .section::before {
+    width: 600px;
+    height: 600px;
   }
 }
 
-@media (max-width: 768px) {
+/* Tablet */
+@media (max-width: 900px) {
   .section {
-    padding: 80px 24px;
+    padding: 80px 32px;
   }
 
-  .sectionTitle {
-    font-size: 36px;
+  .sectionHeader {
+    margin-bottom: 50px;
   }
 
   .sectionLabel {
     font-size: 12px;
     letter-spacing: 0.15em;
+    gap: 12px;
+  }
+
+  .sectionLabel::before,
+  .sectionLabel::after {
+    width: 30px;
+  }
+
+  .sectionSub {
+    font-size: 16px;
+    padding: 0 10px;
+  }
+
+  .grid {
+    gap: 20px;
+  }
+
+  .card {
+    padding: 28px 24px;
+    border-radius: 20px;
+  }
+
+  .card::before,
+  .card::after {
+    border-radius: 20px;
+  }
+
+  .iconWrap {
+    width: 56px;
+    height: 56px;
+    font-size: 24px;
+    margin-bottom: 24px;
+    border-radius: 14px;
+  }
+
+  .iconWrap::before {
+    border-radius: 16px;
+  }
+
+  .cardTitle {
+    font-size: 20px;
+    margin-bottom: 12px;
+  }
+
+  .cardDesc {
+    font-size: 14px;
+    line-height: 1.7;
+    margin-bottom: 24px;
+  }
+
+  .cardNumber {
+    top: 20px;
+    right: 20px;
+    font-size: 13px;
+  }
+
+  .cornerAccent {
+    width: 80px;
+    height: 80px;
+    border-radius: 0 20px 0 0;
+  }
+}
+
+/* Mobile Breakpoint */
+@media (max-width: 768px) {
+  .section {
+    padding: 60px 20px;
+  }
+
+  .section::before {
+    width: 100%;
+    height: 400px;
+    opacity: 0.5;
+  }
+
+  .sectionHeader {
+    margin-bottom: 40px;
+  }
+
+  .sectionTitle {
+    font-size: clamp(24px, 8vw, 36px);
+    margin-bottom: 16px;
+  }
+
+  .sectionLabel {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    gap: 10px;
+    margin-bottom: 16px;
   }
 
   .sectionLabel::before,
@@ -344,32 +512,273 @@
   }
 
   .sectionSub {
-    font-size: 16px;
+    font-size: 15px;
+    line-height: 1.6;
+    padding: 0;
   }
 
   .grid {
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 16px;
   }
 
   .card {
-    padding: 32px 24px;
+    padding: 24px 20px;
+    border-radius: 16px;
+    /* Disable hover effects on mobile, use active state instead */
+    transform: none !important;
+  }
+
+  .card::before,
+  .card::after {
+    border-radius: 16px;
+  }
+
+  /* Mobile active state */
+  .card:active {
+    transform: scale(0.98) !important;
+    border-color: rgba(139, 92, 246, 0.3);
+  }
+
+  .iconWrap {
+    width: 52px;
+    height: 52px;
+    font-size: 22px;
+    margin-bottom: 20px;
+    border-radius: 12px;
+  }
+
+  .iconWrap::before {
+    border-radius: 14px;
   }
 
   .cardTitle {
-    font-size: 20px;
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+
+  .cardDesc {
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+
+  .cardArrow {
+    font-size: 13px;
+    letter-spacing: 0.03em;
+  }
+
+  .cardNumber {
+    top: 16px;
+    right: 16px;
+    font-size: 12px;
+  }
+
+  .cornerAccent {
+    width: 60px;
+    height: 60px;
+    border-radius: 0 16px 0 0;
   }
 }
 
-/* Entrance Animations */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(40px);
+/* Small Mobile */
+@media (max-width: 480px) {
+  .section {
+    padding: 50px 16px;
   }
 
-  to {
-    opacity: 1;
-    transform: translateY(0);
+  .sectionHeader {
+    margin-bottom: 32px;
+  }
+
+  .sectionTitle {
+    font-size: 26px;
+    line-height: 1.15;
+  }
+
+  .sectionLabel {
+    font-size: 10px;
+    gap: 8px;
+  }
+
+  .sectionLabel::before,
+  .sectionLabel::after {
+    width: 16px;
+  }
+
+  .sectionSub {
+    font-size: 14px;
+  }
+
+  .grid {
+    gap: 12px;
+  }
+
+  .card {
+    padding: 20px 16px;
+    border-radius: 14px;
+  }
+
+  .card::before,
+  .card::after {
+    border-radius: 14px;
+  }
+
+  .iconWrap {
+    width: 48px;
+    height: 48px;
+    font-size: 20px;
+    margin-bottom: 16px;
+    border-radius: 10px;
+  }
+
+  .iconWrap::before {
+    border-radius: 12px;
+  }
+
+  .cardTitle {
+    font-size: 17px;
+    margin-bottom: 8px;
+  }
+
+  .cardDesc {
+    font-size: 13px;
+    line-height: 1.6;
+    margin-bottom: 16px;
+  }
+
+  .cardArrow {
+    font-size: 12px;
+  }
+
+  .cardNumber {
+    top: 14px;
+    right: 14px;
+    font-size: 11px;
+  }
+
+  .cornerAccent {
+    width: 50px;
+    height: 50px;
+    border-radius: 0 14px 0 0;
+  }
+}
+
+/* Extra Small Mobile */
+@media (max-width: 360px) {
+  .section {
+    padding: 40px 12px;
+  }
+
+  .sectionTitle {
+    font-size: 24px;
+  }
+
+  .card {
+    padding: 18px 14px;
+  }
+
+  .iconWrap {
+    width: 44px;
+    height: 44px;
+    font-size: 18px;
+  }
+
+  .cardTitle {
+    font-size: 16px;
+  }
+
+  .cardDesc {
+    font-size: 12px;
+  }
+
+  .cardArrow {
+    font-size: 11px;
+  }
+}
+
+/* Landscape Mobile */
+@media (max-height: 500px) and (orientation: landscape) and (max-width: 768px) {
+  .section {
+    padding: 40px 20px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .card {
+    padding: 20px;
+  }
+
+  .iconWrap {
+    width: 48px;
+    height: 48px;
+    font-size: 20px;
+    margin-bottom: 16px;
+  }
+}
+
+/* ============================================
+   ACCESSIBILITY & PERFORMANCE
+   ============================================ */
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .gradientText {
+    animation: none;
+  }
+
+  .card {
+    transition: none;
+  }
+
+  .card:hover {
+    transform: none;
+  }
+
+  .iconWrap,
+  .cardArrow,
+  .cardNumber,
+  .cornerAccent {
+    transition: none;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .card {
+    border-width: 2px;
+  }
+
+  .iconWrap {
+    border-width: 2px;
+  }
+}
+
+/* Focus visible for accessibility */
+.card:focus-visible {
+  outline: 2px solid #a78bfa;
+  outline-offset: 4px;
+}
+
+/* Print styles */
+@media print {
+  .section {
+    padding: 40px 20px;
+  }
+
+  .card {
+    break-inside: avoid;
+    border: 1px solid #ccc;
+    box-shadow: none;
+  }
+
+  .section::before,
+  .cornerAccent,
+  .card::before,
+  .card::after {
+    display: none;
   }
 }

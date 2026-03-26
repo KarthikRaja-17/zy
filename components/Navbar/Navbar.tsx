@@ -2,16 +2,40 @@
 import { useState, useEffect } from 'react';
 import { Button, Drawer } from 'antd';
 import { MenuOutlined, CloseOutlined } from '@ant-design/icons';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import styles from './Navbar.module.css';
 
 const navItems = ['Home', 'Services', 'About', 'Blog', 'Contact'];
 
+// Move this outside component - it's not state-dependent
+const getInitialLogoSize = () => {
+  return { height: 200, width: 200 };
+};
+
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
+  const [isMobile, setIsMobile] = useState(false);
+  // Initialize with default, update in useEffect
+  const [logoSize, setLogoSize] = useState(getInitialLogoSize());
+
+  // Handle logo size updates in useEffect to avoid SSR issues
+  useEffect(() => {
+    const updateLogoSize = () => {
+      if (typeof window !== 'undefined') {
+        if (window.innerWidth <= 480) setLogoSize({ height: 120, width: 120 });
+        else if (window.innerWidth <= 768) setLogoSize({ height: 150, width: 150 });
+        else if (window.innerWidth <= 1024) setLogoSize({ height: 170, width: 170 });
+        else setLogoSize({ height: 200, width: 200 });
+      }
+    };
+
+    updateLogoSize();
+    window.addEventListener('resize', updateLogoSize);
+    return () => window.removeEventListener('resize', updateLogoSize);
+  }, []);
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, item: string) => {
     e.preventDefault();
@@ -19,7 +43,7 @@ export default function Navbar() {
     const element = document.getElementById(targetId);
 
     if (element) {
-      const offset = 100;
+      const offset = isMobile ? 80 : 100;
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - offset;
 
@@ -31,6 +55,19 @@ export default function Navbar() {
 
     setMobileOpen(false);
   };
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+      if (window.innerWidth > 768) {
+        setMobileOpen(false);
+      }
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -55,9 +92,16 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
-    document.body.style.overflow = mobileOpen ? 'hidden' : 'unset';
+    if (mobileOpen) {
+      document.body.style.overflow = 'hidden';
+      document.body.style.touchAction = 'none';
+    } else {
+      document.body.style.overflow = 'unset';
+      document.body.style.touchAction = 'auto';
+    }
     return () => {
       document.body.style.overflow = 'unset';
+      document.body.style.touchAction = 'auto';
     };
   }, [mobileOpen]);
 
@@ -71,10 +115,11 @@ export default function Navbar() {
         ease: [0.25, 0.46, 0.45, 0.94],
         delay: 0.1
       }}
+      style={{ marginLeft: '-100px' }}
     >
-      {/* Logo */}
+      {/* Logo - Responsive positioning */}
       <motion.div
-        style={{ marginLeft: '50px', marginTop: '17px' }}
+        className={styles.logoContainer}
         whileHover={{ scale: 1.03 }}
         whileTap={{ scale: 0.97 }}
         transition={{ type: "spring", stiffness: 400, damping: 17 }}
@@ -83,9 +128,10 @@ export default function Navbar() {
           <img
             src="/z4.png"
             alt="Zyvora"
+            className={styles.logoImage}
             style={{
-              height: '200px',
-              width: '200px',
+              height: logoSize.height,
+              width: logoSize.width,
               cursor: 'pointer'
             }}
           />
@@ -93,7 +139,7 @@ export default function Navbar() {
       </motion.div>
 
       {/* Desktop Navigation */}
-      <nav className={styles.navLinks} style={{ marginLeft: '40px' }}>
+      <nav className={styles.navLinks}>
         {navItems.map((item, index) => (
           <motion.div
             key={item}
@@ -116,12 +162,13 @@ export default function Navbar() {
         ))}
       </nav>
 
-      {/* CTA Button */}
+      {/* CTA Button - Desktop */}
       <motion.div
+        className={styles.ctaContainer}
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.6, delay: 0.5 }}
-        style={{ marginRight: '-150px' }}
+        style={{ marginRight: '10px' }}
       >
         <Button
           className={styles.ctaBtn}
@@ -139,6 +186,7 @@ export default function Navbar() {
 
       {/* Mobile Menu Button */}
       <motion.div
+        className={styles.mobileMenuBtn}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.4 }}
@@ -148,6 +196,7 @@ export default function Navbar() {
           icon={mobileOpen ? <CloseOutlined /> : <MenuOutlined />}
           onClick={() => setMobileOpen(!mobileOpen)}
           type="text"
+          aria-label={mobileOpen ? "Close menu" : "Open menu"}
         />
       </motion.div>
 
@@ -156,12 +205,12 @@ export default function Navbar() {
         open={mobileOpen}
         onClose={() => setMobileOpen(false)}
         placement="right"
-        width={340}
+        width={isMobile && typeof window !== 'undefined' && window.innerWidth <= 480 ? '100%' : 340}
         closable={false}
         styles={{
           body: {
             background: 'linear-gradient(180deg, #080f1e 0%, #0a1225 100%)',
-            padding: '60px 40px',
+            padding: isMobile && typeof window !== 'undefined' && window.innerWidth <= 480 ? '40px 24px' : '60px 40px',
             borderLeft: '1px solid rgba(139, 92, 246, 0.15)'
           },
           mask: {
@@ -169,16 +218,11 @@ export default function Navbar() {
             backdropFilter: 'blur(8px)'
           }
         }}
+        className={styles.mobileDrawer}
       >
         {/* Mobile Logo */}
         <motion.div
-          style={{
-            marginBottom: '50px',
-            fontSize: '32px',
-            fontFamily: 'var(--font-display)',
-            fontWeight: 700,
-            letterSpacing: '-0.02em'
-          }}
+          className={styles.mobileLogo}
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.1 }}
@@ -187,7 +231,7 @@ export default function Navbar() {
         </motion.div>
 
         {/* Mobile Navigation */}
-        <nav style={{ display: 'flex', flexDirection: 'column' }}>
+        <nav className={styles.mobileNav}>
           {navItems.map((item, i) => (
             <motion.div
               key={item}
@@ -212,16 +256,7 @@ export default function Navbar() {
                 {activeSection === item.toLowerCase() && (
                   <motion.div
                     layoutId="activeIndicator"
-                    style={{
-                      position: 'absolute',
-                      left: '-28px',
-                      top: '50%',
-                      transform: 'translateY(-50%)',
-                      width: '4px',
-                      height: '24px',
-                      background: 'linear-gradient(180deg, #8b5cf6, #a78bfa)',
-                      borderRadius: '2px'
-                    }}
+                    className={styles.activeIndicator}
                   />
                 )}
               </Link>
@@ -231,16 +266,19 @@ export default function Navbar() {
 
         {/* Mobile CTA */}
         <motion.div
+          className={styles.mobileCta}
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.5 }}
-          style={{ marginTop: '50px' }}
         >
           <Button
             className={styles.ctaBtn}
             size="large"
             block
-            style={{ height: '56px', fontSize: '15px' }}
+            style={{
+              height: isMobile && typeof window !== 'undefined' && window.innerWidth <= 480 ? '48px' : '56px',
+              fontSize: isMobile && typeof window !== 'undefined' && window.innerWidth <= 480 ? '14px' : '15px'
+            }}
             onClick={() => {
               setMobileOpen(false);
               setTimeout(() => {
@@ -254,14 +292,7 @@ export default function Navbar() {
         </motion.div>
 
         {/* Decorative Line */}
-        <div style={{
-          position: 'absolute',
-          bottom: '40px',
-          left: '40px',
-          right: '40px',
-          height: '1px',
-          background: 'linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.4), transparent)'
-        }} />
+        <div className={styles.decorativeLine} />
       </Drawer>
     </motion.header>
   );

@@ -19,7 +19,7 @@ export default function ThemeProvider({ children }: { children: React.ReactNode 
         },
       }}
     >
-      <CustomCursor />
+      {/* <CustomCursor /> */}
       {children}
     </ConfigProvider>
   );

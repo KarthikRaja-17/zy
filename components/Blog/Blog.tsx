@@ -1,4 +1,5 @@
 'use client';
+import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import {
   ArrowRightOutlined,
@@ -68,25 +69,61 @@ const cardVariants = {
 };
 
 export default function Blog() {
+  const [isMobile, setIsMobile] = useState(false);
+  const [isTablet, setIsTablet] = useState(false);
+  // Initialize with default value instead of calling function that checks window
+  const [marginTop, setMarginTop] = useState('-140px');
+
+  // Handle resize for isMobile/isTablet
+  useEffect(() => {
+    const handleResize = () => {
+      const width = window.innerWidth;
+      setIsMobile(width <= 768);
+      setIsTablet(width <= 1024 && width > 768);
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Handle margin top updates separately
+  useEffect(() => {
+    const handleResize = () => {
+      const width = window.innerWidth;
+      if (width <= 480) setMarginTop('-60px');
+      else if (width <= 768) setMarginTop('-80px');
+      else setMarginTop('-140px');
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
-    <section id="blog" className={styles.section} style={{ marginTop: '-140px' }}>
-      {/* Background Effects - Matching Other Sections */}
-      <div className={styles.orb1} />
-      <div className={styles.orb2} />
+    <section id="blog" className={styles.section} style={{ marginTop }}>
+      {/* Background Effects - Conditional for mobile performance */}
+      {!isMobile && (
+        <>
+          <div className={styles.orb1} />
+          <div className={styles.orb2} />
+        </>
+      )}
       <div className={styles.gridOverlay} />
 
       <div className={styles.container}>
         {/* Section Header - Matching Services/About/Process/Portfolio/Testimonials Style */}
         <motion.div
           className={styles.sectionHeader}
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: isMobile ? 40 : 50 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+          viewport={{ once: true, margin: isMobile ? "-50px" : "-100px" }}
+          transition={{ duration: isMobile ? 0.6 : 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
         >
           <span className={styles.sectionLabel}>
             <span className={styles.labelLine} />
-            <span>Insights</span>
+            <span className={styles.labelText}>Insights</span>
             <span className={styles.labelLine} />
           </span>
           <h2 className={styles.sectionTitle}>
@@ -103,14 +140,15 @@ export default function Blog() {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
+          viewport={{ once: true, margin: isMobile ? "-30px" : "-50px" }}
         >
           {posts.map((post, i) => (
             <motion.article
               key={post.title}
               className={styles.card}
               variants={cardVariants}
-              whileHover={{ y: -12, transition: { duration: 0.4 } }}
+              whileHover={!isMobile ? { y: -12, transition: { duration: 0.4 } } : {}}
+              whileTap={isMobile ? { scale: 0.98 } : {}}
             >
               {/* Corner Accent */}
               <div className={styles.cornerAccent} />
@@ -168,7 +206,11 @@ export default function Blog() {
           viewport={{ once: true }}
           transition={{ delay: 0.6, duration: 0.6 }}
         >
-          <button className={styles.ctaButton}>
+          <button
+            className={styles.ctaButton}
+          // whileHover={!isMobile ? { scale: 1.02 } : {}}
+          // whileTap={{ scale: 0.98 }}
+          >
             <FileTextOutlined />
             <span>View All Articles</span>
             <ArrowRightOutlined />

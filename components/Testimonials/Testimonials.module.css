@@ -1,4 +1,7 @@
-/* Testimonials.module.css - Premium Dark Theme (Aligned with Other Sections) */
+/* ============================================
+   TESTIMONIALS MODULE - PREMIUM DARK THEME
+   FULLY RESPONSIVE (Aligned with Other Sections)
+   ============================================ */
 
 .section {
   padding: 140px 80px;
@@ -68,7 +71,9 @@
   }
 }
 
-/* Container */
+/* ============================================
+   CONTAINER
+   ============================================ */
 .container {
   max-width: 1000px;
   margin: 0 auto;
@@ -79,7 +84,9 @@
   align-items: center;
 }
 
-/* Section Header - Matching Other Sections */
+/* ============================================
+   SECTION HEADER - MATCHING OTHER SECTIONS
+   ============================================ */
 .sectionHeader {
   text-align: center;
   max-width: 700px;
@@ -115,10 +122,19 @@
   display: block;
 }
 
+.labelText {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #a78bfa;
+  white-space: nowrap;
+}
+
 /* Section Title - Space Grotesk Display */
 .sectionTitle {
   font-family: var(--font-display, 'Space Grotesk', sans-serif);
-  font-size: 56px;
+  font-size: clamp(28px, 5vw, 56px);
   font-weight: 700;
   color: #fff;
   margin: 0 0 20px;
@@ -157,21 +173,26 @@
 /* Subtitle */
 .sectionSub {
   font-family: var(--font-primary, 'Inter', sans-serif);
-  font-size: 18px;
+  font-size: clamp(15px, 2vw, 18px);
   color: rgba(255, 255, 255, 0.6);
   line-height: 1.7;
   margin: 0;
   font-weight: 400;
+  padding: 0 20px;
 }
 
-/* Carousel Wrap */
+/* ============================================
+   CAROUSEL WRAP
+   ============================================ */
 .carouselWrap {
   width: 100%;
   max-width: 900px;
   position: relative;
 }
 
-/* Card - Premium Glass Card */
+/* ============================================
+   CARD - PREMIUM GLASS CARD
+   ============================================ */
 .card {
   position: relative;
   text-align: center;
@@ -242,7 +263,7 @@
 /* Text */
 .text {
   font-family: var(--font-primary, 'Inter', sans-serif);
-  font-size: 22px;
+  font-size: clamp(16px, 2vw, 22px);
   line-height: 1.8;
   color: rgba(255, 255, 255, 0.9);
   margin-bottom: 32px;
@@ -278,6 +299,7 @@
   font-weight: 700 !important;
   font-size: 20px !important;
   transition: all 0.4s ease;
+  flex-shrink: 0;
 }
 
 .card:hover .avatar {
@@ -292,7 +314,7 @@
 
 .name {
   font-family: var(--font-display, 'Space Grotesk', sans-serif);
-  font-size: 18px;
+  font-size: clamp(16px, 2vw, 18px);
   font-weight: 700;
   color: #fff;
   margin-bottom: 4px;
@@ -300,7 +322,7 @@
 
 .role {
   font-family: var(--font-primary, 'Inter', sans-serif);
-  font-size: 14px;
+  font-size: clamp(12px, 1.5vw, 14px);
   color: rgba(255, 255, 255, 0.5);
   font-weight: 500;
 }
@@ -323,7 +345,9 @@
   opacity: 1;
 }
 
-/* Navigation Arrows */
+/* ============================================
+   NAVIGATION ARROWS
+   ============================================ */
 .arrow {
   position: absolute;
   top: 50%;
@@ -360,7 +384,9 @@
   right: -80px;
 }
 
-/* Dots */
+/* ============================================
+   DOTS
+   ============================================ */
 .dots {
   margin-top: 40px !important;
 }
@@ -383,7 +409,9 @@
   box-shadow: 0 0 10px rgba(139, 92, 246, 0.5);
 }
 
-/* Trust Indicators */
+/* ============================================
+   TRUST INDICATORS
+   ============================================ */
 .trustIndicators {
   display: flex;
   align-items: center;
@@ -406,7 +434,7 @@
 
 .trustNumber {
   font-family: var(--font-display, 'Space Grotesk', sans-serif);
-  font-size: 32px;
+  font-size: clamp(24px, 3vw, 32px);
   font-weight: 700;
   color: #a78bfa;
   line-height: 1;
@@ -414,7 +442,7 @@
 
 .trustLabel {
   font-family: var(--font-primary, 'Inter', sans-serif);
-  font-size: 13px;
+  font-size: clamp(11px, 1.2vw, 13px);
   font-weight: 600;
   color: rgba(255, 255, 255, 0.5);
   text-transform: uppercase;
@@ -427,14 +455,65 @@
   background: linear-gradient(to bottom, transparent, rgba(139, 92, 246, 0.3), transparent);
 }
 
-/* Responsive */
+/* ============================================
+   RESPONSIVE BREAKPOINTS
+   ============================================ */
+
+/* Large Desktop */
+@media (min-width: 1440px) {
+  .section {
+    padding: 160px 100px;
+  }
+
+  .container {
+    max-width: 1100px;
+  }
+
+  .carouselWrap {
+    max-width: 1000px;
+  }
+
+  .card {
+    padding: 70px 60px;
+  }
+}
+
+/* Desktop */
+@media (max-width: 1280px) {
+  .section {
+    padding: 120px 60px;
+  }
+
+  .sectionHeader {
+    margin-bottom: 50px;
+  }
+
+  .arrowLeft {
+    left: -60px;
+  }
+
+  .arrowRight {
+    right: -60px;
+  }
+
+  .trustIndicators {
+    gap: 40px;
+    padding: 28px 40px;
+  }
+}
+
+/* Small Desktop / Large Tablet */
 @media (max-width: 1024px) {
   .section {
     padding: 100px 40px;
   }
 
   .sectionTitle {
-    font-size: 48px;
+    font-size: clamp(26px, 4vw, 48px);
+  }
+
+  .sectionHeader {
+    margin-bottom: 40px;
   }
 
   .arrowLeft {
@@ -445,9 +524,27 @@
     right: -20px;
   }
 
+  .arrow {
+    width: 48px;
+    height: 48px;
+    font-size: 16px;
+  }
+
+  .card {
+    padding: 48px 36px;
+    border-radius: 20px;
+  }
+
+  .cornerAccent {
+    width: 100px;
+    height: 100px;
+    border-radius: 0 20px 0 0;
+  }
+
   .trustIndicators {
     gap: 32px;
     padding: 24px 32px;
+    margin-top: 60px;
   }
 
   .trustNumber {
@@ -455,41 +552,447 @@
   }
 }
 
-@media (max-width: 768px) {
+/* Tablet */
+@media (max-width: 900px) {
   .section {
-    padding: 80px 24px;
+    padding: 80px 32px;
   }
 
-  .sectionTitle {
-    font-size: 36px;
+  .sectionHeader {
+    margin-bottom: 36px;
   }
 
   .sectionLabel {
     font-size: 12px;
     letter-spacing: 0.15em;
+    gap: 12px;
+    margin-bottom: 20px;
   }
 
-  .sectionLabel .labelLine,
+  .labelLine,
+  .sectionLabel span:nth-child(3) {
+    width: 30px;
+  }
+
+  .sectionSub {
+    font-size: 16px;
+    padding: 0 10px;
+  }
+
+  .carouselWrap {
+    max-width: 100%;
+  }
+
+  .card {
+    padding: 40px 32px;
+  }
+
+  .ratingWrap {
+    margin-bottom: 24px;
+    gap: 6px;
+  }
+
+  .starIcon {
+    font-size: 18px;
+  }
+
+  .text {
+    font-size: 17px;
+    margin-bottom: 24px;
+  }
+
+  .divider {
+    margin-bottom: 24px;
+  }
+
+  .author {
+    gap: 12px;
+  }
+
+  .trustIndicators {
+    gap: 28px;
+    padding: 20px 28px;
+    margin-top: 50px;
+    border-radius: 14px;
+  }
+
+  .trustNumber {
+    font-size: 26px;
+  }
+
+  .trustLabel {
+    font-size: 12px;
+  }
+}
+
+/* Mobile Breakpoint */
+@media (max-width: 768px) {
+  .section {
+    padding: 60px 20px;
+  }
+
+  .section::before {
+    width: 100%;
+    height: 300px;
+  }
+
+  .sectionHeader {
+    margin-bottom: 32px;
+  }
+
+  .sectionTitle {
+    font-size: clamp(24px, 7vw, 36px);
+    margin-bottom: 16px;
+  }
+
+  .sectionLabel {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+
+  .labelLine,
   .sectionLabel span:nth-child(3) {
     width: 20px;
   }
 
   .sectionSub {
-    font-size: 16px;
+    font-size: 15px;
+    line-height: 1.6;
+    padding: 0;
+  }
+
+  .carouselWrap {
+    max-width: 100%;
+  }
+
+  /* Hide arrows on mobile */
+  .arrow {
+    display: none !important;
   }
 
   .card {
-    padding: 40px 24px;
+    padding: 32px 24px;
+    border-radius: 16px;
+    margin: 0 4px;
   }
 
-  .quoteIcon {
-    font-size: 36px;
-    top: 16px;
-    left: 20px;
+  .cornerAccent {
+    width: 80px;
+    height: 80px;
+    border-radius: 0 16px 0 0;
+  }
+
+  .ratingWrap {
+    margin-bottom: 20px;
+    gap: 4px;
+  }
+
+  .starIcon {
+    font-size: 16px;
   }
 
   .text {
-    font-size: 18px;
+    font-size: 15px;
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+
+  .divider {
+    width: 40px;
+    margin-bottom: 20px;
+  }
+
+  .author {
+    gap: 12px;
+  }
+
+  .avatar {
+    width: 48px !important;
+    height: 48px !important;
+    font-size: 16px !important;
+  }
+
+  .name {
+    font-size: 16px;
+  }
+
+  .role {
+    font-size: 13px;
+  }
+
+  .dots {
+    margin-top: 24px !important;
+  }
+
+  .trustIndicators {
+    flex-direction: column;
+    gap: 20px;
+    padding: 24px;
+    margin-top: 40px;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .trustDivider {
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(139, 92, 246, 0.3), transparent);
+  }
+
+  .trustNumber {
+    font-size: 28px;
+  }
+
+  .trustLabel {
+    font-size: 12px;
+  }
+
+  /* Hide orbs on mobile */
+  .orb1,
+  .orb2 {
+    display: none;
+  }
+
+  .cardGlow {
+    display: none;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+  .section {
+    padding: 50px 16px;
+  }
+
+  .sectionHeader {
+    margin-bottom: 28px;
+  }
+
+  .sectionTitle {
+    font-size: 26px;
+  }
+
+  .sectionLabel {
+    font-size: 10px;
+    gap: 8px;
+  }
+
+  .labelLine,
+  .sectionLabel span:nth-child(3) {
+    width: 16px;
+  }
+
+  .sectionSub {
+    font-size: 14px;
+  }
+
+  .card {
+    padding: 28px 20px;
+    border-radius: 14px;
+    margin: 0 2px;
+  }
+
+  .cornerAccent {
+    width: 60px;
+    height: 60px;
+    border-radius: 0 14px 0 0;
+  }
+
+  .ratingWrap {
+    margin-bottom: 16px;
+  }
+
+  .starIcon {
+    font-size: 14px;
+  }
+
+  .text {
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 16px;
+  }
+
+  .divider {
+    width: 32px;
+    margin-bottom: 16px;
+  }
+
+  .author {
+    gap: 10px;
+  }
+
+  .avatar {
+    width: 44px !important;
+    height: 44px !important;
+    font-size: 14px !important;
+  }
+
+  .name {
+    font-size: 15px;
+  }
+
+  .role {
+    font-size: 12px;
+  }
+
+  .trustIndicators {
+    padding: 20px;
+    gap: 16px;
+    margin-top: 32px;
+  }
+
+  .trustNumber {
+    font-size: 24px;
+  }
+
+  .trustLabel {
+    font-size: 11px;
+    letter-spacing: 0.05em;
+  }
+}
+
+/* Extra Small Mobile */
+@media (max-width: 360px) {
+  .section {
+    padding: 40px 12px;
+  }
+
+  .sectionTitle {
+    font-size: 24px;
+  }
+
+  .card {
+    padding: 24px 16px;
+  }
+
+  .text {
+    font-size: 13px;
+  }
+
+  .avatar {
+    width: 40px !important;
+    height: 40px !important;
+  }
+
+  .trustIndicators {
+    padding: 16px;
+  }
+
+  .trustNumber {
+    font-size: 22px;
+  }
+}
+
+/* Landscape Mobile */
+@media (max-height: 500px) and (orientation: landscape) and (max-width: 768px) {
+  .section {
+    padding: 40px 20px;
+  }
+
+  .sectionHeader {
+    margin-bottom: 24px;
+  }
+
+  .sectionTitle {
+    font-size: 28px;
+  }
+
+  .card {
+    padding: 24px 32px;
+  }
+
+  .text {
+    font-size: 14px;
+    margin-bottom: 16px;
+  }
+
+  .divider {
+    margin-bottom: 16px;
+  }
+
+  .trustIndicators {
+    flex-direction: row;
+    gap: 24px;
+    padding: 16px 24px;
+    margin-top: 32px;
+  }
+
+  .trustDivider {
+    width: 1px;
+    height: 30px;
+  }
+}
+
+/* ============================================
+   ACCESSIBILITY & PERFORMANCE
+   ============================================ */
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+
+  .gradientText,
+  .cardGlow {
+    animation: none;
+  }
+
+  .orb1,
+  .orb2 {
+    animation: none;
+  }
+
+  .card,
+  .avatar,
+  .arrow {
+    transition: none;
+  }
+
+  .card:hover {
+    transform: none;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+
+  .card,
+  .trustIndicators,
+  .avatar {
+    border-width: 2px;
+  }
+
+  .arrow {
+    border: 2px solid #fff;
+  }
+}
+
+/* Focus visible for accessibility */
+.card:focus-visible,
+.arrow:focus-visible {
+  outline: 2px solid #a78bfa;
+  outline-offset: 4px;
+}
+
+/* Print styles */
+@media print {
+  .section {
+    padding: 40px 20px;
+  }
+
+  .orb1,
+  .orb2,
+  .gridOverlay,
+  .cardGlow,
+  .cornerAccent {
+    display: none;
+  }
+
+  .card {
+    border: 1px solid #ccc;
+    box-shadow: none;
+    break-inside: avoid;
   }
 
   .arrow {
@@ -497,14 +1000,7 @@
   }
 
   .trustIndicators {
-    flex-direction: column;
-    gap: 24px;
-    padding: 24px;
-    margin-top: 60px;
-  }
-
-  .trustDivider {
-    width: 60px;
-    height: 1px;
+    border: 1px solid #ccc;
+    box-shadow: none;
   }
 }

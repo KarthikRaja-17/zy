@@ -1,4 +1,5 @@
 'use client';
+import { useEffect, useState } from 'react';
 import { Row, Col, Divider } from 'antd';
 import {
   GithubOutlined,
@@ -14,31 +15,50 @@ import styles from './Footer.module.css';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  const [isMobile, setIsMobile] = useState(false);
+
+  // All hooks at the top, unconditional
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   return (
     <footer id="footer" className={styles.footer}>
       {/* Background Effects */}
       <div className={styles.gridOverlay} />
-      <div className={styles.glowOrb} />
+      {!isMobile && <div className={styles.glowOrb} />}
 
       <div className={styles.container}>
-        <Row gutter={[48, 48]}>
-          {/* Brand */}
-          <Col xs={24} lg={8}>
+        <Row
+          gutter={[
+            { xs: 32, sm: 40, md: 48 },
+            { xs: 40, sm: 48, md: 48 }
+          ]}
+        >
+          {/* Brand Column */}
+          <Col xs={24} md={12} lg={8}>
             <div className={styles.brand}>
-              <Link href="/" className={styles.logo} style={{ marginTop: '-80px' }}>
-                {/* <span className={styles.logoText}>Zyvora</span> */}
+              <Link
+                href="/"
+                className={styles.logo}
+                style={{ marginTop: isMobile ? '-40px' : '-90px' }}
+              >
                 <img
                   src="/z4.png"
                   alt="Zyvora"
-                  style={{
-                    height: '200px',
-                    width: '200px',
-                    cursor: 'pointer'
-                  }}
+                  className={styles.logoImage}
                 />
               </Link>
-              <p className={styles.desc} style={{ marginTop: '-70px' }}>
+              <p
+                className={styles.desc}
+                style={{ marginTop: isMobile ? '-30px' : '-70px' }}
+              >
                 Next-generation IT services and software products - built for businesses that want to grow faster, operate smarter, and lead with technology.
               </p>
               <div className={styles.socials}>
@@ -58,8 +78,8 @@ export default function Footer() {
             </div>
           </Col>
 
-          {/* Services */}
-          <Col xs={12} sm={8} lg={5}>
+          {/* Services Column */}
+          <Col xs={12} sm={12} md={6} lg={5}>
             <h4 className={styles.heading}>Services</h4>
             <ul className={styles.list}>
               <li><Link href="#services">Custom Software</Link></li>
@@ -70,8 +90,8 @@ export default function Footer() {
             </ul>
           </Col>
 
-          {/* Products */}
-          <Col xs={12} sm={8} lg={5}>
+          {/* Products Column */}
+          <Col xs={12} sm={12} md={6} lg={5}>
             <h4 className={styles.heading}>Products</h4>
             <ul className={styles.list}>
               <li><Link href="#portfolio">ZyFlow</Link></li>
@@ -82,8 +102,8 @@ export default function Footer() {
             </ul>
           </Col>
 
-          {/* Contact */}
-          <Col xs={24} sm={8} lg={6}>
+          {/* Contact Column */}
+          <Col xs={24} sm={24} md={12} lg={6}>
             <h4 className={styles.heading}>Contact</h4>
             <ul className={styles.list}>
               <li className={styles.contactItem}>

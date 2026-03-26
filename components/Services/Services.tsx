@@ -1,4 +1,5 @@
 'use client';
+import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import {
   RobotOutlined,
@@ -84,15 +85,48 @@ const headerVariants = {
 };
 
 export default function Services() {
+  const [isMobile, setIsMobile] = useState(false);
+  const [isTablet, setIsTablet] = useState(false);
+  // Initialize with default value instead of calling function that checks window
+  const [marginTop, setMarginTop] = useState('-120px');
+
+  // Handle resize for isMobile/isTablet
+  useEffect(() => {
+    const handleResize = () => {
+      const width = window.innerWidth;
+      setIsMobile(width <= 768);
+      setIsTablet(width <= 1024 && width > 768);
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Handle margin top updates separately
+  useEffect(() => {
+    const handleResize = () => {
+      const width = window.innerWidth;
+      if (width <= 480) setMarginTop('-260px');
+      else if (width <= 768) setMarginTop('-280px');
+      else setMarginTop('-120px');
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
-    <section id="services" className={styles.section} style={{ marginTop: '-120px' }}>
+    <section id="services" className={styles.section} style={{ marginTop }}>
       {/* Section Header */}
       <motion.div
         className={styles.sectionHeader}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
+        viewport={{ once: true, margin: isMobile ? "-50px" : "-100px" }}
         variants={headerVariants}
+        style={{ marginTop: isMobile ? '0px' : '-50px' }}
       >
         <span className={styles.sectionLabel}>What We Offer</span>
         <h2 className={styles.sectionTitle}>
@@ -109,17 +143,21 @@ export default function Services() {
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, margin: "-50px" }}
+        viewport={{ once: true, margin: isMobile ? "-30px" : "-50px" }}
       >
         {services.map((service, i) => (
           <motion.div
             key={service.title}
             className={styles.card}
             variants={cardVariants}
-            whileHover={{
+            whileHover={!isMobile ? {
               y: -12,
               transition: { duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }
-            }}
+            } : {}}
+            whileTap={isMobile ? {
+              scale: 0.98,
+              transition: { duration: 0.2 }
+            } : {}}
           >
             {/* Corner Accent */}
             <div className={styles.cornerAccent} />

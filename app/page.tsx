@@ -15,7 +15,7 @@ import Footer from '@/components/Footer/Footer';
 
 export default function Home() {
   return (
-    <main>
+    <main className="min-h-screen w-full overflow-x-hidden">
       <Navbar />
       <Hero />
       {/* <Marquee /> */}

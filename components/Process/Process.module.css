@@ -1,4 +1,7 @@
-/* Process.module.css - Premium Dark Theme (Aligned with Services & About) */
+/* ============================================
+   PROCESS MODULE - PREMIUM DARK THEME
+   FULLY RESPONSIVE (Aligned with Services & About)
+   ============================================ */
 
 .section {
   padding: 140px 80px;
@@ -68,7 +71,9 @@
   }
 }
 
-/* Container */
+/* ============================================
+   CONTAINER
+   ============================================ */
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -80,7 +85,9 @@
   gap: 80px;
 }
 
-/* Section Header - Matching Services Style */
+/* ============================================
+   SECTION HEADER - MATCHING SERVICES STYLE
+   ============================================ */
 .sectionHeader {
   text-align: center;
   max-width: 700px;
@@ -115,10 +122,19 @@
   display: block;
 }
 
+.labelText {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #a78bfa;
+  white-space: nowrap;
+}
+
 /* Section Title - Space Grotesk Display */
 .sectionTitle {
   font-family: var(--font-display, 'Space Grotesk', sans-serif);
-  font-size: 56px;
+  font-size: clamp(28px, 5vw, 56px);
   font-weight: 700;
   color: #fff;
   margin: 0 0 20px;
@@ -157,14 +173,17 @@
 /* Subtitle */
 .sectionSub {
   font-family: var(--font-primary, 'Inter', sans-serif);
-  font-size: 18px;
+  font-size: clamp(15px, 2vw, 18px);
   color: rgba(255, 255, 255, 0.6);
   line-height: 1.7;
   margin: 0;
   font-weight: 400;
+  padding: 0 20px;
 }
 
-/* Steps Grid */
+/* ============================================
+   STEPS GRID
+   ============================================ */
 .stepsGrid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -173,7 +192,9 @@
   position: relative;
 }
 
-/* Step Cards - Premium Glass Cards */
+/* ============================================
+   STEP CARDS - PREMIUM GLASS CARDS
+   ============================================ */
 .stepCard {
   position: relative;
   padding: 40px 32px;
@@ -289,6 +310,7 @@
   position: relative;
   transition: all 0.4s ease;
   box-shadow: 0 8px 32px rgba(139, 92, 246, 0.1);
+  flex-shrink: 0;
 }
 
 .iconWrap::before {
@@ -316,7 +338,7 @@
 /* Step Title */
 .stepTitle {
   font-family: var(--font-display, 'Space Grotesk', sans-serif);
-  font-size: 22px;
+  font-size: clamp(18px, 2vw, 22px);
   font-weight: 600;
   color: #fff;
   margin: 0 0 16px;
@@ -332,7 +354,7 @@
 /* Step Description */
 .stepDesc {
   font-family: var(--font-primary, 'Inter', sans-serif);
-  font-size: 15px;
+  font-size: clamp(14px, 1.5vw, 15px);
   color: rgba(255, 255, 255, 0.6);
   line-height: 1.8;
   margin: 0;
@@ -377,9 +399,14 @@
   opacity: 1;
 }
 
-/* CTA Wrapper */
+/* ============================================
+   CTA WRAPPER
+   ============================================ */
 .ctaWrapper {
   margin-top: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 /* CTA Button - Matching Services/About */
@@ -387,13 +414,13 @@
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  padding: 0 36px;
-  height: 56px;
+  padding: 0 clamp(24px, 3vw, 36px);
+  height: clamp(48px, 6vw, 56px);
   background: linear-gradient(135deg, #7c3aed 0%, #a78bfa 100%);
   border: none;
   border-radius: 50px;
   font-family: var(--font-primary, 'Inter', sans-serif);
-  font-size: 14px;
+  font-size: clamp(12px, 1.2vw, 14px);
   font-weight: 600;
   letter-spacing: 0.05em;
   text-transform: uppercase;
@@ -403,6 +430,7 @@
   overflow: hidden;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 0 4px 20px rgba(139, 92, 246, 0.3);
+  white-space: nowrap;
 }
 
 .ctaButton::before {
@@ -425,70 +453,536 @@
   left: 100%;
 }
 
-/* Responsive */
+/* ============================================
+   RESPONSIVE BREAKPOINTS
+   ============================================ */
+
+/* Large Desktop */
+@media (min-width: 1440px) {
+  .section {
+    padding: 160px 100px;
+  }
+
+  .container {
+    gap: 100px;
+  }
+
+  .stepsGrid {
+    gap: 32px;
+  }
+
+  .stepCard {
+    padding: 48px 36px;
+  }
+}
+
+/* Desktop */
+@media (max-width: 1280px) {
+  .section {
+    padding: 120px 60px;
+  }
+
+  .container {
+    gap: 70px;
+  }
+
+  .stepsGrid {
+    gap: 20px;
+  }
+
+  .stepCard {
+    padding: 36px 28px;
+  }
+
+  .connector {
+    right: -24px;
+    width: 28px;
+    height: 28px;
+  }
+}
+
+/* Small Desktop / Large Tablet */
 @media (max-width: 1024px) {
   .section {
     padding: 100px 40px;
   }
 
+  .container {
+    gap: 60px;
+  }
+
   .sectionTitle {
-    font-size: 48px;
+    font-size: clamp(26px, 4vw, 48px);
   }
 
   .stepsGrid {
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
+    max-width: 800px;
+    margin: 0 auto;
   }
 
   .connector {
     display: none;
   }
-}
 
-@media (max-width: 768px) {
-  .section {
-    padding: 80px 24px;
+  .stepCard {
+    padding: 32px 28px;
+    border-radius: 20px;
   }
 
-  .sectionTitle {
-    font-size: 36px;
+  .stepCard::before,
+  .stepCard::after {
+    border-radius: 20px;
+  }
+
+  .cornerAccent {
+    border-radius: 0 20px 0 0;
+  }
+
+  .iconWrap {
+    width: 60px;
+    height: 60px;
+    font-size: 26px;
+    border-radius: 14px;
+  }
+
+  .iconWrap::before {
+    border-radius: 16px;
+  }
+
+  .stepNumber {
+    top: 20px;
+    right: 20px;
+    font-size: 13px;
+  }
+
+  .cornerAccent {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+  .section {
+    padding: 80px 32px;
+  }
+
+  .container {
+    gap: 50px;
   }
 
   .sectionLabel {
     font-size: 12px;
     letter-spacing: 0.15em;
+    gap: 12px;
   }
 
-  .sectionLabel .labelLine,
+  .labelLine,
   .sectionLabel span:nth-child(3) {
-    width: 20px;
+    width: 30px;
   }
 
   .sectionSub {
     font-size: 16px;
+    padding: 0 10px;
   }
 
   .stepsGrid {
-    grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 16px;
   }
 
   .stepCard {
-    padding: 32px 24px;
+    padding: 28px 24px;
   }
 
   .iconWrap {
     width: 56px;
     height: 56px;
     font-size: 24px;
+    margin-bottom: 20px;
   }
 
   .stepTitle {
     font-size: 20px;
+    margin-bottom: 12px;
+  }
+
+  .stepNumber {
+    top: 18px;
+    right: 18px;
+  }
+
+  .cornerAccent {
+    width: 70px;
+    height: 70px;
+  }
+}
+
+/* Mobile Breakpoint */
+@media (max-width: 768px) {
+  .section {
+    padding: 60px 20px;
+  }
+
+  .section::before {
+    width: 100%;
+    height: 300px;
+  }
+
+  .container {
+    gap: 40px;
+  }
+
+  .sectionTitle {
+    font-size: clamp(24px, 7vw, 36px);
+    margin-bottom: 16px;
+  }
+
+  .sectionLabel {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+
+  .labelLine,
+  .sectionLabel span:nth-child(3) {
+    width: 20px;
+  }
+
+  .sectionSub {
+    font-size: 15px;
+    line-height: 1.6;
+    padding: 0;
+  }
+
+  .stepsGrid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    max-width: 500px;
+  }
+
+  .stepCard {
+    padding: 28px 24px;
+    border-radius: 16px;
+    /* Disable hover lift on mobile */
+    transform: none !important;
+  }
+
+  .stepCard::before,
+  .stepCard::after {
+    border-radius: 16px;
+  }
+
+  /* Mobile active state */
+  .stepCard:active {
+    transform: scale(0.98) !important;
+    border-color: rgba(139, 92, 246, 0.3);
+  }
+
+  .iconWrap {
+    width: 52px;
+    height: 52px;
+    font-size: 22px;
+    margin-bottom: 20px;
+    border-radius: 12px;
+  }
+
+  .iconWrap::before {
+    border-radius: 14px;
+  }
+
+  .stepTitle {
+    font-size: 20px;
+    margin-bottom: 12px;
+  }
+
+  .stepDesc {
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  .stepNumber {
+    top: 20px;
+    right: 20px;
+    font-size: 13px;
+  }
+
+  .cornerAccent {
+    width: 60px;
+    height: 60px;
+    border-radius: 0 16px 0 0;
+  }
+
+  .stepGlow {
+    display: none;
+  }
+
+  .ctaWrapper {
+    margin-top: 10px;
   }
 
   .ctaButton {
     width: 100%;
+    max-width: 300px;
     justify-content: center;
+    height: 52px;
+    font-size: 13px;
+  }
+
+  .ctaButton:hover {
+    transform: none;
+  }
+
+  .ctaButton:active {
+    transform: scale(0.98) !important;
+  }
+
+  /* Hide orbs on mobile */
+  .orb1,
+  .orb2 {
+    display: none;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+  .section {
+    padding: 50px 16px;
+  }
+
+  .container {
+    gap: 32px;
+  }
+
+  .sectionTitle {
+    font-size: 26px;
+  }
+
+  .sectionLabel {
+    font-size: 10px;
+    gap: 8px;
+  }
+
+  .labelLine,
+  .sectionLabel span:nth-child(3) {
+    width: 16px;
+  }
+
+  .sectionSub {
+    font-size: 14px;
+  }
+
+  .stepsGrid {
+    gap: 12px;
+  }
+
+  .stepCard {
+    padding: 24px 20px;
+    border-radius: 14px;
+  }
+
+  .stepCard::before,
+  .stepCard::after {
+    border-radius: 14px;
+  }
+
+  .cornerAccent {
+    border-radius: 0 14px 0 0;
+  }
+
+  .iconWrap {
+    width: 48px;
+    height: 48px;
+    font-size: 20px;
+    margin-bottom: 16px;
+    border-radius: 10px;
+  }
+
+  .iconWrap::before {
+    border-radius: 12px;
+  }
+
+  .stepTitle {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+
+  .stepDesc {
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  .stepNumber {
+    top: 16px;
+    right: 16px;
+    font-size: 12px;
+  }
+
+  .cornerAccent {
+    width: 50px;
+    height: 50px;
+  }
+
+  .ctaButton {
+    height: 48px;
+    font-size: 12px;
+    max-width: 280px;
+  }
+}
+
+/* Extra Small Mobile */
+@media (max-width: 360px) {
+  .section {
+    padding: 40px 12px;
+  }
+
+  .sectionTitle {
+    font-size: 24px;
+  }
+
+  .stepCard {
+    padding: 20px 16px;
+  }
+
+  .iconWrap {
+    width: 44px;
+    height: 44px;
+    font-size: 18px;
+  }
+
+  .stepTitle {
+    font-size: 17px;
+  }
+
+  .stepDesc {
+    font-size: 12px;
+  }
+
+  .stepNumber {
+    top: 14px;
+    right: 14px;
+    font-size: 11px;
+  }
+
+  .ctaButton {
+    height: 44px;
+    font-size: 11px;
+  }
+}
+
+/* Landscape Mobile */
+@media (max-height: 500px) and (orientation: landscape) and (max-width: 768px) {
+  .section {
+    padding: 40px 20px;
+  }
+
+  .container {
+    gap: 30px;
+  }
+
+  .sectionTitle {
+    font-size: 28px;
+  }
+
+  .stepsGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .stepCard {
+    padding: 20px;
+  }
+
+  .iconWrap {
+    width: 44px;
+    height: 44px;
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
+
+  .stepTitle {
+    font-size: 16px;
+    margin-bottom: 8px;
+  }
+
+  .stepDesc {
+    font-size: 12px;
+  }
+}
+
+/* ============================================
+   ACCESSIBILITY & PERFORMANCE
+   ============================================ */
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+
+  .gradientText,
+  .stepGlow {
+    animation: none;
+  }
+
+  .orb1,
+  .orb2 {
+    animation: none;
+  }
+
+  .stepCard,
+  .iconWrap,
+  .ctaButton {
+    transition: none;
+  }
+
+  .stepCard:hover {
+    transform: none;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+
+  .stepCard,
+  .iconWrap {
+    border-width: 2px;
+  }
+
+  .ctaButton {
+    border: 2px solid #fff;
+  }
+}
+
+/* Focus visible for accessibility */
+.stepCard:focus-visible,
+.ctaButton:focus-visible {
+  outline: 2px solid #a78bfa;
+  outline-offset: 4px;
+}
+
+/* Print styles */
+@media print {
+  .section {
+    padding: 40px 20px;
+  }
+
+  .orb1,
+  .orb2,
+  .gridOverlay,
+  .stepGlow,
+  .cornerAccent,
+  .connector {
+    display: none;
+  }
+
+  .stepCard {
+    border: 1px solid #ccc;
+    box-shadow: none;
+    break-inside: avoid;
+  }
+
+  .stepsGrid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
