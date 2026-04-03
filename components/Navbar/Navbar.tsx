@@ -115,7 +115,7 @@ export default function Navbar() {
         ease: [0.25, 0.46, 0.45, 0.94],
         delay: 0.1
       }}
-      style={{ marginLeft: '-100px' }}
+      style={{ marginLeft: isMobile ? '0px' : '-100px' }}
     >
       {/* Logo - Responsive positioning */}
       <motion.div
@@ -129,11 +129,7 @@ export default function Navbar() {
             src="/z4.png"
             alt="Zyvora"
             className={styles.logoImage}
-            style={{
-              height: logoSize.height,
-              width: logoSize.width,
-              cursor: 'pointer'
-            }}
+            style={{ height: 200, width: 200 }}
           />
         </Link>
       </motion.div>

@@ -6,7 +6,6 @@ import Services from '@/components/Services/Services';
 import About from '@/components/About/About';
 import Process from '@/components/Process/Process';
 import Portfolio from '@/components/Portfolio/Portfolio';
-import Testimonials from '@/components/Testimonials/Testimonials';
 import Pricing from '@/components/Pricing/Pricing';
 import Team from '@/components/Team/Team';
 import Blog from '@/components/Blog/Blog';
@@ -23,7 +22,7 @@ export default function Home() {
       <About />
       <Process />
       <Portfolio />
-      <Testimonials />
+      {/* <Testimonials /> */}
       {/* <Pricing /> */}
       {/* <Team /> */}
       <Blog />
